@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Course Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ============================
+             NAVIGATION BAR
+             Links to all pages of the app
+             ============================ -->
+        <nav class="navbar">
+            <span class="nav-brand">📚 Student Tracker</span>
+            <!-- Brand name on the left -->
+
+            <div class="nav-links">
+                <!-- nav-links groups the page links on the right -->
+                <a href="index.html" class="nav-link active">🏠 Home</a>
+                <!-- class="active" highlights this link since we're on this page -->
+                <a href="profile.html" class="nav-link">👤 Profile</a>
+                <!-- Links to the profile/settings page -->
+            </div>
+        </nav>
+
+
+        <!-- ============================
+             HEADER
+             ============================ -->
+        <header class="header">
+            <div id="welcomeMsg" class="header-welcome"></div>
+            <!-- JavaScript will fill this with the student's name from profile -->
+
+            <h1 class="header-title">📚 Student Course Tracker</h1>
+            <p class="header-sub">Stay organized. Never miss a deadline.</p>
+        </header>
+
+
+        <!-- ============================
+             DASHBOARD
+             Shows summary numbers at a glance
+             ============================ -->
+        <section class="dashboard">
+            <h2 class="section-title">Dashboard</h2>
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <span class="stat-number" id="totalCourses">0</span>
+                    <span class="stat-label">Total Courses</span>
+                </div>
+
+                <div class="stat-card completed-card">
+                    <span class="stat-number" id="completedCourses">0</span>
+                    <span class="stat-label">Completed</span>
+                </div>
+
+                <div class="stat-card pending-card">
+                    <span class="stat-number" id="pendingCourses">0</span>
+                    <span class="stat-label">Pending</span>
+                </div>
+
+                <div class="stat-card assignment-card">
+                    <span class="stat-number" id="totalAssignments">0</span>
+                    <span class="stat-label">Total Assignments</span>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ============================
+             ADD COURSE FORM
+             ============================ -->
+        <section class="form-section">
+            <h2 class="section-title">Add New Course</h2>
+
+            <div class="form">
+                <input type="text" id="courseInput" placeholder="Course name (e.g. Mathematics)">
+                <!-- User types the course name here -->
+
+                <input type="text" id="instructorInput" placeholder="Instructor name">
+                <!-- User types the teacher's name here -->
+
+                <input type="date" id="deadlineInput">
+                <!-- Date picker for course deadline -->
+
+                <button id="addBtn">+ Add Course</button>
+            </div>
+        </section>
+
+
+        <!-- ============================
+             SEARCH + FILTER BAR
+             ============================ -->
+        <section class="controls">
+            <input type="text" id="searchInput" placeholder="🔍 Search courses..." class="search-input">
+
+            <div class="filters">
+                <button class="filter-btn active" id="allBtn">All</button>
+                <button class="filter-btn" id="pendingBtn">Pending</button>
+                <button class="filter-btn" id="completedBtn">Completed</button>
+            </div>
+        </section>
+
+
+        <!-- ============================
+             COURSE LIST
+             Cards are built by JavaScript
+             ============================ -->
+        <section>
+            <h2 class="section-title">My Courses</h2>
+            <ul id="courseList"></ul>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+    <!-- script.js must be at the bottom so all HTML above loads first -->
+ <footer>
+
+        <p>
+            © 2026 Yeabsira Eyasu |
+            Aspiring Web Developer
+        </p>
+
+    </footer>
+</body>
+</html>

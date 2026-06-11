@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile & Settings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ============================
+             NAVIGATION BAR
+             ============================ -->
+        <nav class="navbar">
+            <span class="nav-brand">📚 Student Tracker</span>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">🏠 Home</a>
+                <a href="profile.html" class="nav-link active">👤 Profile</a>
+                <!-- active class highlights "Profile" since we're on this page -->
+            </div>
+        </nav>
+
+
+        <!-- ============================
+             PAGE HEADER
+             ============================ -->
+        <header class="header">
+            <h1 class="header-title">👤 Profile & Settings</h1>
+            <p class="header-sub">Your personal information and preferences</p>
+        </header>
+
+
+        <!-- ============================
+             PROFILE PHOTO SECTION
+             ============================ -->
+        <section class="form-section">
+            <h2 class="section-title">Profile Photo</h2>
+
+            <div class="photo-section">
+                <!-- The big circle that shows the profile picture -->
+                <div class="avatar-circle" id="avatarCircle">
+                    <img id="avatarImg" src="" alt="Profile photo" style="display:none;">
+                    <!-- The <img> tag shows the photo — hidden until a photo is uploaded -->
+
+                    <span id="avatarInitials">?</span>
+                    <!-- Shows initials when no photo is set (e.g. "JD" for John Doe) -->
+                </div>
+
+                <div class="photo-controls">
+                    <!-- type="file" creates a file picker button -->
+                    <!-- accept="image/*" means only image files are allowed -->
+                    <input type="file" id="photoInput" accept="image/*" style="display:none;">
+                    <!-- Hidden — we use a styled button to trigger it instead -->
+
+                    <button class="btn btn-edit" onclick="document.getElementById('photoInput').click()">
+                        📷 Upload Photo
+                    </button>
+                    <!-- Clicking this button triggers the hidden file input above -->
+
+                    <button class="btn btn-delete" id="removePhotoBtn">Remove Photo</button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ============================
+             PERSONAL INFORMATION FORM
+             ============================ -->
+        <section class="form-section">
+            <h2 class="section-title">Personal Information</h2>
+
+            <div class="profile-form">
+            <!-- profile-form stacks inputs vertically (unlike the horizontal course form) -->
+
+                <div class="form-group">
+                    <!-- form-group wraps each label + input pair -->
+                    <label for="nameInput">Full Name</label>
+                    <!-- <label> describes the input — for="nameInput" links it to the input below -->
+                    <input type="text" id="nameInput" placeholder="e.g. John Doe">
+                </div>
+
+                <div class="form-group">
+                    <label for="gradeInput">Grade / Year</label>
+                    <input type="text" id="gradeInput" placeholder="e.g. Grade 10 or Year 2">
+                </div>
+
+                <div class="form-group">
+                    <label for="schoolInput">School / University</label>
+                    <input type="text" id="schoolInput" placeholder="e.g. Addis Ababa University">
+                </div>
+
+                <button id="saveProfileBtn" class="btn btn-complete" style="width:100%; padding: 12px;">
+                    💾 Save Profile
+                </button>
+                <!-- Saves all three fields to localStorage when clicked -->
+
+            </div>
+
+            <!-- This message appears briefly after saving (hidden by default) -->
+            <p id="saveMsg" style="display:none; color: #22c55e; text-align:center; margin-top:12px; font-weight:600;">
+                ✅ Profile saved!
+            </p>
+        </section>
+
+
+        <!-- ============================
+             THEME SETTINGS
+             Dark mode / Light mode toggle
+             ============================ -->
+        <section class="form-section">
+            <h2 class="section-title">Appearance</h2>
+
+            <div class="theme-row">
+                <div>
+                    <p style="margin:0; font-weight:600; color:#333;">Dark Mode</p>
+                    <p style="margin:4px 0 0; font-size:13px; color:#888;">Switch between light and dark theme</p>
+                </div>
+
+                <!-- Toggle switch: a checkbox styled to look like a switch -->
+                <label class="toggle-switch">
+                    <input type="checkbox" id="darkModeToggle">
+                    <!-- When this checkbox is checked = dark mode ON -->
+                    <span class="toggle-slider"></span>
+                    <!-- The slider is the visual part of the switch (CSS handles the look) -->
+                </label>
+            </div>
+        </section>
+
+
+        <!-- ============================
+             DANGER ZONE
+             Clear all data button
+             ============================ -->
+        <section class="form-section">
+            <h2 class="section-title" style="color:#ef4444;">⚠️ Danger Zone</h2>
+
+            <p style="font-size:14px; color:#666; margin-bottom:12px;">
+                This will permanently delete ALL your courses, assignments, and profile data.
+            </p>
+
+            <button id="clearAllBtn" class="btn btn-delete" style="width:100%; padding:12px;">
+                🗑️ Clear All Data
+            </button>
+        </section>
+
+    </div>
+
+    <script src="profile.js"></script>
+    <!-- profile.js handles everything on this page -->
+
+</body>
+</html>

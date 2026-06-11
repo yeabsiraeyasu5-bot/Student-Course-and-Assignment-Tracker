@@ -1,0 +1,703 @@
+/* ============================================================
+   style.css — SHARED STYLES
+   This file is used by ALL pages: index, detail, profile
+   ============================================================ */
+
+/* * = every element on the page */
+* {
+    box-sizing: border-box;
+    /* Padding/border included in element width — prevents overflow */
+}
+
+/* ============================================================
+   BODY & BASE
+   ============================================================ */
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #eef2f7;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    transition: background 0.3s, color 0.3s;
+    /* Smooth transition when dark mode is toggled */
+}
+
+/* DARK MODE — applied when JS adds class="dark" to <body> */
+body.dark {
+    background-color: #1a1a2e;
+    /* Very dark navy background */
+    color: #e0e0e0;
+    /* Light grey text */
+}
+
+/* ============================================================
+   CONTAINER
+   ============================================================ */
+
+.container {
+    width: 90%;
+    max-width: 780px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* Space between each section */
+}
+
+/* ============================================================
+   NAVIGATION BAR
+   ============================================================ */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    /* Brand on left, links on right */
+    align-items: center;
+    background: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+body.dark .navbar {
+    background: #16213e;
+    /* Dark card background */
+}
+
+.nav-brand {
+    font-weight: 700;
+    font-size: 16px;
+    color: #4f6ef7;
+}
+
+.nav-links {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-link {
+    text-decoration: none;
+    /* Removes the default underline from links */
+    padding: 7px 14px;
+    border-radius: 20px;
+    /* Pill shape */
+    font-size: 13px;
+    color: #666;
+    transition: all 0.2s;
+}
+
+.nav-link:hover {
+    background: #eef2f7;
+    color: #4f6ef7;
+}
+
+.nav-link.active {
+    /* JS adds/removes this — or we hardcode it per page */
+    background: #4f6ef7;
+    color: white;
+}
+
+body.dark .nav-link { color: #aaa; }
+body.dark .nav-link.active { background: #4f6ef7; color: white; }
+body.dark .nav-link:hover { background: #0f3460; color: #7b9fff; }
+
+/* ============================================================
+   BACK BUTTON (detail page only)
+   ============================================================ */
+
+.back-bar {
+    display: flex;
+}
+
+.back-btn {
+    text-decoration: none;
+    color: #4f6ef7;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 0;
+    transition: opacity 0.2s;
+}
+
+.back-btn:hover { opacity: 0.7; }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.header {
+    background: linear-gradient(135deg, #4f6ef7, #7c4dff);
+    color: white;
+    padding: 28px 24px;
+    border-radius: 14px;
+    text-align: center;
+}
+
+.header-welcome {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 6px;
+}
+
+.header-title {
+    margin: 0 0 6px 0;
+    font-size: 24px;
+}
+
+.header-sub {
+    margin: 4px 0 0;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+/* ============================================================
+   SECTION CARDS
+   White boxes wrapping each section
+   ============================================================ */
+
+.dashboard,
+.form-section,
+.controls,
+section {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+body.dark .dashboard,
+body.dark .form-section,
+body.dark .controls,
+body.dark section {
+    background: #16213e;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.section-title {
+    margin: 0 0 16px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 2px solid #eef2f7;
+    padding-bottom: 10px;
+}
+
+body.dark .section-title {
+    color: #e0e0e0;
+    border-bottom-color: #0f3460;
+}
+
+/* ============================================================
+   DASHBOARD STAT CARDS
+   ============================================================ */
+
+.stats-grid {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    /* Wraps to next line on small screens */
+}
+
+.stat-card {
+    flex: 1;
+    min-width: 100px;
+    /* Never gets narrower than 100px before wrapping */
+    background: #f5f7ff;
+    border-radius: 10px;
+    padding: 16px 12px;
+    text-align: center;
+    border-left: 4px solid #4f6ef7;
+}
+
+.completed-card  { background: #f0fdf4; border-left-color: #22c55e; }
+.pending-card    { background: #fffbeb; border-left-color: #f59e0b; }
+.assignment-card { background: #fdf4ff; border-left-color: #a855f7; }
+
+body.dark .stat-card        { background: #0f3460; }
+body.dark .completed-card   { background: #052e16; }
+body.dark .pending-card     { background: #2d1a00; }
+body.dark .assignment-card  { background: #2d0a3e; }
+
+.stat-number {
+    display: block;
+    font-size: 30px;
+    font-weight: 700;
+    color: #4f6ef7;
+    line-height: 1;
+}
+
+.completed-card .stat-number  { color: #22c55e; }
+.pending-card .stat-number    { color: #f59e0b; }
+.assignment-card .stat-number { color: #a855f7; }
+
+.stat-label {
+    display: block;
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+}
+
+/* ============================================================
+   FORM
+   ============================================================ */
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    /* Wrap inputs to next line on small screens */
+    gap: 10px;
+}
+
+.form input {
+    flex: 1;
+    min-width: 150px;
+    padding: 10px 14px;
+    border: 1.5px solid #dde1f0;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    background: white;
+    color: #333;
+}
+
+.form input:focus { border-color: #4f6ef7; }
+
+body.dark .form input {
+    background: #0f3460;
+    border-color: #1a4a8a;
+    color: #e0e0e0;
+}
+
+/* ============================================================
+   SEARCH + FILTER
+   ============================================================ */
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+.search-input {
+    flex: 1;
+    min-width: 180px;
+    padding: 10px 14px;
+    border: 1.5px solid #dde1f0;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    background: white;
+    color: #333;
+    transition: border-color 0.2s;
+}
+
+.search-input:focus { border-color: #4f6ef7; }
+
+body.dark .search-input {
+    background: #0f3460;
+    border-color: #1a4a8a;
+    color: #e0e0e0;
+}
+
+.filters { display: flex; gap: 8px; }
+
+.filter-btn {
+    padding: 8px 16px;
+    border: 1.5px solid #dde1f0;
+    background: white;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #555;
+}
+
+.filter-btn:hover { border-color: #4f6ef7; color: #4f6ef7; }
+.filter-btn.active { background: #4f6ef7; color: white; border-color: #4f6ef7; }
+
+body.dark .filter-btn { background: #0f3460; border-color: #1a4a8a; color: #aaa; }
+body.dark .filter-btn.active { background: #4f6ef7; color: white; }
+
+/* ============================================================
+   COURSE / ASSIGNMENT LIST
+   ul = the list container, li = each card
+   ============================================================ */
+
+ul {
+    list-style: none;
+    /* No bullet points */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+li {
+    background: #fafafa;
+    border: 1.5px solid #eee;
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    /* Info on left, buttons on right */
+    align-items: flex-start;
+    transition: box-shadow 0.2s;
+}
+
+li:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+
+li.completed-item {
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+    opacity: 0.85;
+}
+
+body.dark li {
+    background: #0f3460;
+    border-color: #1a4a8a;
+}
+
+body.dark li.completed-item {
+    background: #052e16;
+    border-color: #166534;
+}
+
+/* ============================================================
+   COURSE INFO (left side of each card)
+   ============================================================ */
+
+.course-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    /* Takes up remaining width */
+}
+
+.course-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #222;
+}
+
+body.dark .course-name { color: #e0e0e0; }
+
+.course-detail {
+    font-size: 12px;
+    color: #777;
+}
+
+body.dark .course-detail { color: #aaa; }
+
+.status-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    width: fit-content;
+    /* Only as wide as its text */
+}
+
+.badge-pending   { background: #fffbeb; color: #d97706; }
+.badge-completed { background: #f0fdf4; color: #16a34a; }
+
+/* ============================================================
+   PROGRESS BAR (on course cards — small version)
+   ============================================================ */
+
+.progress-bar-wrap {
+    background: #e5e7eb;
+    border-radius: 10px;
+    height: 6px;
+    width: 200px;
+    max-width: 100%;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    background: #4f6ef7;
+    transition: width 0.4s;
+    /* Smooth animation when percentage changes */
+}
+
+.progress-label {
+    font-size: 11px;
+    color: #888;
+    margin-top: 2px;
+}
+
+/* ============================================================
+   PROGRESS BAR (on detail page — large version)
+   ============================================================ */
+
+.progress-big-wrap { padding: 8px 0; }
+
+.progress-big-track {
+    background: #e5e7eb;
+    border-radius: 10px;
+    height: 14px;
+    /* Taller bar for the detail page */
+    width: 100%;
+}
+
+.progress-big-fill {
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #4f6ef7, #7c4dff);
+    /* Gradient fill — goes from blue to purple */
+    transition: width 0.5s ease;
+    /* Smooth animation */
+}
+
+.progress-big-label {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #666;
+    text-align: center;
+}
+
+body.dark .progress-big-track { background: #0f3460; }
+body.dark .progress-big-label { color: #aaa; }
+body.dark .progress-bar-wrap  { background: #0f3460; }
+
+/* ============================================================
+   ACTION BUTTONS
+   ============================================================ */
+
+.course-actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+    /* Prevents buttons from squishing */
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+    text-decoration: none;
+    /* For <a> tags styled as buttons */
+    display: inline-block;
+}
+
+.btn:hover    { opacity: 0.85; }
+.btn:active   { transform: scale(0.96); }
+/* When clicked, button briefly shrinks — feels responsive */
+
+.btn-view     { background: #e0e7ff; color: #4f6ef7; }
+.btn-complete { background: #22c55e; color: white; }
+.btn-edit     { background: #f59e0b; color: white; }
+.btn-delete   { background: #ef4444; color: white; }
+
+#addBtn {
+    padding: 10px 20px;
+    background: #4f6ef7;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#addBtn:hover { background: #3a58e0; }
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+
+.empty-state {
+    text-align: center;
+    color: #aaa;
+    font-size: 14px;
+    padding: 30px 0;
+}
+
+/* ============================================================
+   PROFILE PAGE SPECIFIC STYLES
+   ============================================================ */
+
+/* Photo circle */
+.photo-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.avatar-circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    /* Makes it a circle */
+    background: #e0e7ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* Hides anything outside the circle */
+    font-size: 28px;
+    font-weight: 700;
+    color: #4f6ef7;
+    border: 3px solid #4f6ef7;
+    flex-shrink: 0;
+}
+
+.avatar-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Fills the circle without stretching the image */
+}
+
+.photo-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Profile form — stacked vertically (not horizontal like course form) */
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+}
+
+body.dark .form-group label { color: #aaa; }
+
+.form-group input {
+    padding: 10px 14px;
+    border: 1.5px solid #dde1f0;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    background: white;
+    color: #333;
+}
+
+.form-group input:focus { border-color: #4f6ef7; }
+
+body.dark .form-group input {
+    background: #0f3460;
+    border-color: #1a4a8a;
+    color: #e0e0e0;
+}
+
+/* Dark mode toggle row */
+.theme-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Toggle switch (checkbox styled as a sliding switch) */
+.toggle-switch {
+    position: relative;
+    width: 50px;
+    height: 26px;
+    cursor: pointer;
+}
+
+.toggle-switch input {
+    /* Hide the actual checkbox — we style the span instead */
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #ccc;
+    border-radius: 26px;
+    transition: background 0.3s;
+}
+
+/* The circular knob inside the toggle */
+.toggle-slider::before {
+    content: "";
+    /* ::before creates a fake element — we use it as the knob */
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+    /* Smooth slide animation */
+}
+
+/* When toggle is ON (checked), slide the knob right */
+.toggle-switch input:checked + .toggle-slider {
+    background: #4f6ef7;
+    /* Blue when on */
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+    transform: translateX(24px);
+    /* Move knob 24px to the right */
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   Applied only on screens smaller than 500px (phones)
+   ============================================================ */
+
+@media (max-width: 500px) {
+
+    .stats-grid {
+        flex-direction: column;
+        /* Stack stat cards vertically on phone */
+    }
+
+    li {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .course-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .photo-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+footer {
+
+    text-align: center;
+
+    padding: 20px;
+
+    margin-top: 40px;
+
+    color: #165cbd;
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Detail</title>
+    <!-- Title will be updated by JavaScript to show the actual course name -->
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ============================
+             NAVIGATION BAR
+             Same nav appears on every page
+             ============================ -->
+        <nav class="navbar">
+            <span class="nav-brand">📚 Student Tracker</span>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">🏠 Home</a>
+                <a href="profile.html" class="nav-link">👤 Profile</a>
+            </div>
+        </nav>
+
+
+        <!-- ============================
+             BACK BUTTON
+             Takes user back to the home page
+             ============================ -->
+        <div class="back-bar">
+            <a href="index.html" class="back-btn">← Back to Courses</a>
+            <!-- An <a> tag is a link — href="index.html" goes back to home -->
+        </div>
+
+
+        <!-- ============================
+             COURSE HEADER
+             Shows course name, instructor, deadline
+             JavaScript fills in the real data
+             ============================ -->
+        <header class="header">
+            <h1 class="header-title" id="detailCourseName">Loading...</h1>
+            <!-- "Loading..." is replaced by JS with the real course name -->
+
+            <p class="header-sub" id="detailInstructor"></p>
+            <!-- Instructor name goes here -->
+
+            <p class="header-sub" id="detailDeadline"></p>
+            <!-- Course deadline goes here -->
+        </header>
+
+
+        <!-- ============================
+             PROGRESS SECTION
+             Shows a visual bar: X out of Y assignments done
+             ============================ -->
+        <section class="dashboard">
+            <h2 class="section-title">Course Progress</h2>
+
+            <div class="progress-big-wrap">
+                <!-- The grey background track of the progress bar -->
+                <div class="progress-big-track">
+                    <div class="progress-big-fill" id="progressFill"></div>
+                    <!-- JavaScript sets the width of this div (e.g. width: 60%) -->
+                </div>
+
+                <p class="progress-big-label" id="progressLabel">0 of 0 assignments completed</p>
+                <!-- Text below bar showing exact numbers -->
+            </div>
+
+            <!-- 3 stat cards: total, done, pending assignments -->
+            <div class="stats-grid" style="margin-top: 16px;">
+
+                <div class="stat-card">
+                    <span class="stat-number" id="detailTotal">0</span>
+                    <span class="stat-label">Total Tasks</span>
+                </div>
+
+                <div class="stat-card completed-card">
+                    <span class="stat-number" id="detailDone">0</span>
+                    <span class="stat-label">Completed</span>
+                </div>
+
+                <div class="stat-card pending-card">
+                    <span class="stat-number" id="detailPending">0</span>
+                    <span class="stat-label">Pending</span>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ============================
+             ADD ASSIGNMENT FORM
+             ============================ -->
+        <section class="form-section">
+            <h2 class="section-title">Add Assignment</h2>
+
+            <div class="form">
+                <input type="text" id="assignInput" placeholder="Assignment title (e.g. Chapter 3 Essay)">
+                <!-- User types the assignment name -->
+
+                <input type="date" id="assignDeadline">
+                <!-- Due date for this specific assignment -->
+
+                <button id="addAssignBtn">+ Add Assignment</button>
+            </div>
+        </section>
+
+
+        <!-- ============================
+             ASSIGNMENT LIST
+             Cards are built by JavaScript
+             ============================ -->
+        <section>
+            <h2 class="section-title">Assignments</h2>
+            <ul id="assignList"></ul>
+            <!-- JavaScript will fill this list with assignment cards -->
+        </section>
+
+    </div>
+
+    <script src="detail.js"></script>
+    <!-- detail.js handles everything on THIS page -->
+    <!-- It's separate from script.js which handles the home page -->
+
+</body>
+</html>

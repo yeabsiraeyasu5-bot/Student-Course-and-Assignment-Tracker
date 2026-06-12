@@ -691,6 +691,23 @@ body.dark .form-group input {
         align-items: flex-start;
     }
 }
+.about-project {
+    margin: 30px auto;
+    padding: 20px;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.about-project h3 {
+    margin-bottom: 10px;
+}
+
+.about-project p {
+    line-height: 1.6;
+    font-size: 15px;
+}
 footer {
 
     text-align: center;
